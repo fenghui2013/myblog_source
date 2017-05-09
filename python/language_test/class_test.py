@@ -73,12 +73,64 @@ print(m.xxx)
 #p.delegate()
 
 
-from abc import ABCMeta, abstractmethod
+#from abc import ABCMeta, abstractmethod
+#
+#class Super():
+#    __metaclass__ = ABCMeta
+#    @abstractmethod
+#    def method(self):
+#        pass
+#
+#s = Super()
 
-class Super():
-    __metaclass__ = ABCMeta
-    @abstractmethod
-    def method(self):
-        pass
+#l = [5, 6, 7, 8, 9]
+#print(l[::2])
+#print(l[slice(None, None, 2)])
+#
+#class Indexer:
+#    data = [5, 6, 7, 8, 9]
+#    def __getitem__(self, index):
+#        print("__getitem__: %s" % index)
+#        return self.data[index]
+#
+#    def __setitem__(self, index, value):
+#        self.data[index] = value
+#
+#    def __len__(self):
+#        return len(self.data)
+#
+#x = Indexer()
+#print(x[2])
+#print(x[::2])
+#print(x[:])
+#x[:] = [1, 2, 3]
+#print(x[:])
+#
+#for i in x:
+#    print(i)
 
-s = Super()
+#class C:
+#    def __index__(self):
+#        return 255
+#
+#c = C()
+#print(c)
+#print(bin(c))
+
+
+class steper:
+    data = "tom"
+    def __getitem__(self, i):
+        print("__getitem__: %s" % i)
+        return self.data[i]
+
+x = steper()
+print(x[1])
+#----for----
+for item in x:
+    print(item)
+#----in----
+print('o' in x)
+#----list comprehension----
+print([c for c in x])
+print(map(str.upper, x))
