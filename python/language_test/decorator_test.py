@@ -109,21 +109,47 @@
 
 
 # 类装饰器
+#def decorator(cls):
+#    class Wrapper:
+#        def __init__(self, *args):
+#            self.wrapped = cls(*args)
+#
+#        def __getattr__(self, name):
+#            return getattr(self.wrapped, name)
+#    return Wrapper
+#
+#
+#@decorator
+#class C:
+#    def __init__(self, x, y):
+#        self.attr = 'spam'
+#
+#c = C(6, 7)
+#print(c.attr)
 
-def decorator(cls):
-    class Wrapper:
-        def __init__(self, *args):
-            self.wrapped = cls(*args)
+#def decorator(func, replace_callback=True):
+#    def _wrapper(*args):
+#        print("in _wrapper %s" % replace_callback)
+#        func(*args)
+#    return _wrapper
+#
+#@decorator
+#def f():
+#    print("hello world")
+#
+#f()
 
-        def __getattr__(self, name):
-            return getattr(self.wrapped, name)
-    return Wrapper
+from functools import wraps
 
+def decorator(func):
+    #@wraps(func)
+    def _wrapper(*args):
+        func(*args)
+    _wrapper.__name__ = func.__name__
+    return _wrapper
 
 @decorator
-class C:
-    def __init__(self, x, y):
-        self.attr = 'spam'
+def f():
+    print("hello world")
 
-c = C(6, 7)
-print(c.attr)
+print(f.__name__)
