@@ -1,0 +1,25 @@
+GetAttr===========================================
+getattr:other
+__len__:42
+getattr:__getitem__
+getattr:__coerce__
+getattr:__add__
+getattr:__call__
+getattr:__call__
+getattr:__str__
+[Getattr str]
+getattr:__str__
+[Getattr str]
+
+GetAttribute======================================
+getattribute:eggs
+getattribute:spam
+getattribute:other
+__len__:42
+fail []
+fail +
+fail ()
+getattribute:__call__
+getattribute:__str__
+[GetAttribute str]
+<__main__.GetAttribute object at 0x10b6cfb90>

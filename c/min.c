@@ -21,12 +21,12 @@ int min(int *array, int length) {
 int binary_find(int *array, int length, int x) {
     int start = 0;
     int end = length - 1;
-    int mid = (start+end)/2;
+    int mid = 0;
     while (start <= end) {
+        mid = (start+end)/2;
         if (array[mid] == x) return 1;
         if (x > array[mid]) start = mid+1;
         if (x < array[mid]) end = mid-1;
-        mid = (start+end)/2;
     }
     return 0;
 }
@@ -41,6 +41,7 @@ int find(int *array, int length, int x) {
     while (start <= end) {
         //printf("%d %d %d\n", start, mid, end);
         //printf("%d %d %d\n", array[start], array[mid], array[end]);
+        mid = (start+end)/2;
         if (array[mid] == x) return 1;
         if (array[mid] >= array[start]) {
             if (x < array[start]) start = mid+1;
@@ -52,7 +53,6 @@ int find(int *array, int length, int x) {
             else if (x < array[mid]) end = mid-1;
             else if (x > array[mid]) start = mid+1;
         }
-        mid = (start+end)/2;
     }
     return 0;
 }

@@ -1,19 +1,19 @@
-def deco(arg):
-    def _deco(func):
-        def __deco():
-            print("before %s called [%s]." % (func.__name__, arg))
-            func()
-            print("  after %s called [%s]." % (func.__name__, arg))
-        return __deco
-    return _deco
- 
-@deco("mymodule")
-def myfunc():
-    print(" myfunc() called.")
- 
-@deco("module2")
-def myfunc2():
-    print(" myfunc2() called.")
- 
-myfunc()
-myfunc2()
+#-*- coding: utf-8 -*-
+
+class C:
+    data = "spam"
+    #def __gt__(self, other):
+    #    print("__gt__")
+    #    return self.data > other
+    
+    #def __lt__(self, other):
+    #    print("__lt__")
+    #    return self.data < other
+        
+    def __cmp__(self, other):
+        print("__cmp__")
+        return cmp(self.data, other)
+        
+c = C()
+print(c > "ham")
+print(c < "ham")
