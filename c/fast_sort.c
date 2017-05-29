@@ -7,7 +7,7 @@ _swap(int *a, int i, int j) {
     a[i] = a[j];
     a[j] = temp;
 }
-
+/*
 int
 partion(int *a, int start, int end) {
     int temp = a[end];
@@ -26,6 +26,23 @@ partion(int *a, int start, int end) {
 
     return p;
 }
+*/
+int
+partion(int *a, int start, int end) {
+    int i = start;
+    int j = end;
+    int key = a[i];
+
+    while (i < j) {
+        while (i<j && a[j]>key) j--;
+        if (i != j) a[i] = a[j];
+        while (i<j && a[i]<=key) i++;
+        if (i != j) a[j] = a[i];
+    }
+    a[i] = key;
+
+    return i;
+}
 
 void print(int *a, int start, int end) {
     int i;
@@ -38,7 +55,6 @@ void print(int *a, int start, int end) {
 void
 fast_sort(int *a, int start, int end) {
     int p;
-    print(a, start, end);
     if (start < end) {
         p = partion(a, start, end);
         fast_sort(a, start, p-1);
@@ -53,8 +69,10 @@ main() {
     //int a[] = {0, 4, 1, 3, 2, 16, 9, 10, 14, 8, 7};
     //int a[] = {0, 16, 4, 10, 14, 7, 9, 3, 2, 8, 1};
     //int a[] = {0, 1, 4, 10, 14, 7, 9, 3, 2, 8, 16};
-    int a[] = {1, 0, 1, 1, 1, 2, 4, 5, 1, 1, 1, 3, 4, 5, 6, 7, 9};
-    //int a[] = {1};
+    //int a[] = {1, 0, 1, 1, 1, 2, 4, 5, 1, 1, 1, 3, 4, 5, 6, 7, 9};
+    int a[] = {1};
+    //int a[] = {0, 0, 0, 1, 0, 0, 0};
+    //int a[] = {5, 4, 3, 2, 1};
     int len = sizeof(a)/sizeof(int);
     print(a, 0, len-1);
     fast_sort(a, 0, len-1);
