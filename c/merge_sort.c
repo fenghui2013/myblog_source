@@ -37,6 +37,7 @@ merge_sort(int *src, int *temp, int start, int end) {
         mid = (start+end)/2;
         merge_sort(src, temp, start, mid);
         merge_sort(src, temp, mid+1, end);
+        printf("%d\n", mid);
         merge(src, temp, start, mid, end);
     }
 }
@@ -52,7 +53,8 @@ main() {
     //int a[] = {1};
     //int a[] = {0, 0, 0, 1, 0, 0, 0};
     //int a[] = {5, 4, 3, 2, 1};
-    int a[] = {1, 0};
+    //int a[] = {1, 0};
+    int a[] = {10, 4, 6, 3, 8, 2, 5, 7};
     int len = sizeof(a)/sizeof(int);
     int *b = (int *)malloc(sizeof(int)*len);
     print(a, 0, len-1);
